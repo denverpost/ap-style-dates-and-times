@@ -458,7 +458,7 @@ function print_apstyle_form() {
 	</table>
 	<p>&nbsp;</p>
 	<table class="widefat" id="options">
-	<thead><tr><th colspan="0">Options</th></tr></thead>
+	<thead><tr><th colspan="2">Options</th></tr></thead>
 	<tbody>
 		<tr>
 			<td>
@@ -507,15 +507,15 @@ function print_apstyle_form() {
 	</table>
 	<p>&nbsp;</p>
 	<table class="widefat" id="usage">
-	<thead><tr><th colspan="0">Usage</th></tr></thead>
+	<thead><tr><th colspan="2">Usage</th></tr></thead>
 	<tbody>
 		<tr>
-			<td colspan="0">
+			<td colspan="2">
 			<p><span class="description">To use this plugin, you have to edit your template files, replacing WordPress&#8217; default date and time tags with the new  ones listed below. You can use it on dates and times for posts, comments and post modified information.</span></p>
 			</td>		
 		</tr>
 		<tr>
-			<td>
+			<td width="25%">
 				<p><strong>For post dates and times</strong></p>
 			</td>
 			<td>
