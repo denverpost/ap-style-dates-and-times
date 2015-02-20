@@ -33,7 +33,7 @@ putenv("TZ=".$aplocaltime);
 
 // Post date formatting
 
-function ap_date() {
+function get_ap_date() {
 	$today = get_option('ap_today');
 	$captoday = get_option('ap_captoday');
 	$useyear = get_option('ap_useyear');
@@ -86,12 +86,16 @@ function ap_date() {
 		$apdate = $apmonth." ".get_the_time('j')."".$apyear; 
 	endif;
 
-echo $apdate;
+	return $apdate;
+}
+
+function ap_date() {
+	echo get_ap_date();
 }
 
 // Post time formatting
 
-function ap_time() {
+function get_ap_time() {
 	$capnoon = get_option('ap_capnoon');
 
 	// Format am and pm to AP Style abbreviations
@@ -126,12 +130,16 @@ function ap_time() {
 		$aptime = get_the_time('g:i')." ".$meridian;
 	endif;
 
-echo $aptime;
+	return $aptime;
+}
+
+function ap_time() {
+	echo get_ap_time();
 }
 
 // Comment date formatting
 
-function ap_comment_date() {
+function get_ap_comment_date() {
 	$today = get_option('ap_today');
 	$captoday = get_option('ap_captoday');
 	$useyear = get_option('ap_useyear');
@@ -185,12 +193,16 @@ function ap_comment_date() {
 		$apcdate = $apcmonth." ".get_comment_time('j')."".$apcyear; 
 	endif;
 
-echo $apcdate;
+	return $apcdate;
+}
+
+function ap_comment_date() {
+	echo get_ap_comment_date();
 }
 
 // Comment time formatting
 
-function ap_comment_time() {
+function get_ap_comment_time() {
 	$capnoon = get_option('ap_capnoon');
 
 	// Format am and pm to AP Style abbreviations
@@ -222,15 +234,19 @@ function ap_comment_time() {
 	elseif (get_comment_time('i')=='00') :
 		$apctime = get_comment_time('g')." ".$cmeridian;
 	else :
-	$apctime = get_comment_time('g:i')." ".$cmeridian;
+		$apctime = get_comment_time('g:i')." ".$cmeridian;
 	endif;
 
-echo ($apctime);
+	return $apctime;
+}
+
+function ap_comment_time() {
+	echo get_ap_comment_time();
 }
 
 // Modified date formatting
 
-function ap_modified_date() {
+function get_ap_modified_date() {
 	$today = get_option('ap_today');
 	$captoday = get_option('ap_captoday');
 	$useyear = get_option('ap_useyear');
@@ -283,12 +299,16 @@ function ap_modified_date() {
 		$apmoddate = $apmodmonth." ".get_the_modified_date('j')."".$apmodyear; 
 	endif;
 
-echo $apmoddate;
+	return $apmoddate;
+}
+
+function ap_modified_date() {
+	get_ap_modified_date();
 }
 
 // Modified time formatting
 
-function ap_modified_time() {
+function get_ap_modified_time() {
 	$capnoon = get_option('ap_capnoon');
 
 	// Format am and pm to AP Style abbreviations
@@ -323,7 +343,11 @@ function ap_modified_time() {
 		$apmodtime = get_the_modified_time('g:i')." ".$modmeridian;
 	endif;
 
-echo ($apmodtime);
+	return ($apmodtime);
+}
+
+function ap_modified_time() {
+	echo get_ap_modified_time();
 }
 
 // Set up plugin options
@@ -496,10 +520,12 @@ function print_apstyle_form() {
 			</td>
 			<td>
 				<p><strong>&lt;?php ap_time(); ?&gt;</strong> will print the post&#8217;s time in AP Style.</p>
+				<p><strong>&lt;?php get_ap_time(); ?&gt;</strong> returns the post&#8217;s time in AP Style for use in PHP.</p>
 				<p>Find the <code>&lt;?php the_time(); ?&gt;</code> tag in your template files (single.php, index.php, search.php, archives.php, page.php, etc.) and replace it with:</p>
 				<p><code>&lt;?php if (function_exists('ap_time')) { ap_time(); } else { the_time(); } ?&gt;</code></p>
 				<p><span class="description"><strong>Using the if statement will make sure the date is still printed if the plugin is deactivated.</strong></span></p>
 				<p>Likewise, <strong>&lt;?php ap_date(); ?&gt;</strong> will print the post&#8217;s date in AP Style.</p>
+				<p><strong>&lt;?php get_ap_date(); ?&gt;</strong> returns the post&#8217;s date in AP Style for use in PHP.</p>
 				<p>Find the <code>&lt;?php the_date(); ?&gt;</code> tag in your template files and replace it with:</p>
 				<p><code>&lt;?php if (function_exists('ap_date')) { ap_date(); } else { the_date(); } ?&gt;</code></p>
 				<p><strong>Here&#8217;s how I use it:</strong></p>
@@ -514,9 +540,11 @@ function print_apstyle_form() {
 			</td>
 			<td>
 				<p><strong>&lt;?php ap_comment_time(); ?&gt;</strong> will print the comment times in AP Style.</p>
+				<p><strong>&lt;?php get_ap_comment_time(); ?&gt;</strong> returns the comment times in AP Style for use in PHP.</p>
 				<p>Find the <code>&lt;?php comment_time(); ?&gt;</code> tag in your comments template file (comments.php) and replace it with: </p>
 				<p><code>&lt;?php if (function_exists('ap_comment_time')) { ap_comment_time(); } else { comment_time(); } ?&gt;</code></p>
 				<p><strong>&lt;?php ap_comment_date(); ?&gt;</strong> will print the comment dates in AP Style.</p>
+				<p><strong>&lt;?php get_ap_comment_date(); ?&gt;</strong> returns the comment dates in AP Style for use in PHP.</p>
 				<p>Find the <code>&lt;?php comment_date(); ?&gt;</code> tag in your comments template file and replace it with:</p>
 				<p><code>&lt;?php if (function_exists('ap_comment_date')) { ap_comment_date(); } else { comment_date(); } ?&gt;</code></p>
 			</td>
@@ -527,9 +555,11 @@ function print_apstyle_form() {
 			</td>
 			<td>
 				<p><strong>&lt;?php ap_modified_time(); ?&gt;</strong> will print the post&#8217;s modified time in AP Style.</p>
+				<p><strong>&lt;?php get_ap_modified_time(); ?&gt;</strong> returns the post&#8217;s modified time in AP Style for use in PHP.</p>
 				<p>Find the <code>&lt;?php the_modified_time(); ?&gt;</code> tag in your template files (single.php, index.php, search.php, archives.php, page.php, etc.) and replace it with: </p>
 				<p><code>&lt;?php if (function_exists('ap_modified_time')) { ap_modified_time(); } else { the_modified_time(); } ?&gt;</code></p>
 				<p><strong>&lt;?php ap_modified_date(); ?&gt;</strong> will print the post&#8217;s modified date in AP Style.</p>
+				<p><strong>&lt;?php get_ap_modified_date(); ?&gt;</strong> returns the post&#8217;s modified date in AP Style for use in PHP.</p>
 				<p>Find the <code>&lt;?php the_modified_date(); ?&gt;</code> tag in your template files and replace it with:</p>
 				<p><code>&lt;?php if (function_exists('ap_modified_date')) { ap_modified_date(); } else { the_modified_date(); } ?&gt;</code></p>
 			</td>
