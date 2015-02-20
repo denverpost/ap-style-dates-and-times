@@ -37,6 +37,12 @@ Therefore, if your post was published at 1:13 in the afternoon on September 22, 
 
 ##Changelog
 
+###2.2
+- ADDED: get_ version of functions to return dates for use in PHP.
+- REMOVED: references to donations
+- FIX: Options page design tweaks
+- FIX: Resurrected plugin
+
 ###2.1
 - FIX: Typos in comment and updated date code.
 
