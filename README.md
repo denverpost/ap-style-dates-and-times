@@ -1,3 +1,5 @@
+Originally forked from the [AP Style Dates and Times plugin](https://wordpress.org/plugins/ap-style-dates-and-times/) on Wordpress.org.
+
 # AP Style Dates and Times
 
 This plugin changes the format of the dates and times of your posts and comments to match Associated Press Style. This is perfect for news and magazine sites running WordPress and for those blog writers with a penchant for style consistency.
