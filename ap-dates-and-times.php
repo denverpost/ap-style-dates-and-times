@@ -349,14 +349,9 @@ register_deactivation_hook(__FILE__,'unset_apstyle_options');
 
 function admin_apstyle_options(){
 	
-	// Get the url for options page images
-	
-	$apimgurl = get_bloginfo ( 'wpurl' ) . '/wp-content/plugins/' . basename(dirname(__FILE__)) . '/apdt_icon.png';
-	$donateimgurl = get_bloginfo ( 'wpurl' ) . '/wp-content/plugins/' . basename(dirname(__FILE__)) . '/donate.gif';
-	
 	// Start the page and build the sidebar
 	
-	?><div class="wrap"><h2 style="background: url(<?php echo $apimgurl; ?>) 0% 80% no-repeat;padding-left:45px;">AP Style Dates and Times plugin options</h2>	
+	?><div class="wrap"><h2>AP Style Dates and Times plugin options</h2>	
 	<div id="apside" style="width:20%;float:right;padding-right:20px;">
 		<table class="widefat">
 		<thead><tr><th>Plugin information</th></tr></thead>
@@ -370,32 +365,7 @@ function admin_apstyle_options(){
 		</tbody>
 		</table>
 		<p>&nbsp;</p>
-		
-		<table class="widefat">
-		<thead><tr><th>Support the plugin</th></tr></thead>
-		<tbody>
-			<tr><td>
-				<p><strong>&bull; <a href="http://wordpress.org/extend/plugins/ap-style-dates-and-times/" target="blank" title="Rate this plugin">Rate it at WordPress.org</a></strong></p>
-				<p><strong>&bull; <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2679155" target="blank" title="Donate">Donate</a></strong> <br />
-					<em>This plugin is free and released under a <a href="http://www.gnu.org/licenses/" target="_blank" title="GNU license">GNU General Public License</a>, but if you found it useful or it rocks your car, feel free to donate to my booze fund.</em></p>
-					<center><p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2679155" target="blank" title="Donate"><img src="<?php echo $donateimgurl; ?>" alt="Donate"></a></p></center>
-			</td></tr>
-		</tbody>
-		</table>
-		<p>&nbsp;</p>
 
-		<table class="widefat">
-		<thead><tr><th>Get a stylebook</th></tr></thead>
-		<tbody>
-			<tr><td>
-				<p><em>This plugin is not affiliated with the Associated Press, but no plugin can replace having your hands on the real thing!</em></p>
-				<center><p>
-					<iframe src="http://rcm.amazon.com/e/cm?lt1=_blank&bc1=dfdfdf&IS2=1&bg1=FFFFFF&fc1=000000&lc1=21759B&t=rockmycar-20&o=1&p=8&l=as1&m=amazon&f=ifr&md=10FE9736YVPPT7A0FBG2&asins=0465012620" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-					</p>
-				</center>
-			</td></tr>
-		</tbody>
-		</table>
 	</div>
 	<div style="width:75%;float:left;" >
 
